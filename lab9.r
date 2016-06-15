@@ -105,20 +105,5 @@ t(gmin.port$weights)%*%cov.mat%*%e1.port$weights
 
 # compute efficient frontier of risk assets and plot
 e.frontier = efficient.frontier(muhat.vals, cov.mat, alpha.min=-1, alpha.max=1)
-summary(e.frontier)
-plot(e.frontier, plot.assets=T, col="blue", pch=16, cex=2)
-
-# compute tangency portfolio with rf = 0.005
-tan.port = tangency.portfolio(muhat.vals, cov.mat, risk.free=0.005)
-summary(tan.port)
-plot(tan.port, col="blue")
-
-# efficient portfolio of T-bills + tangency that has the same SD as sbux
-names(tan.port)
-x.tan = sigmahat.vals["Starbucks"]/tan.port$sd
-x.tan
-mu.pe = 0.005 + x.tan*(tan.port$er - 0.005)
-mu.pe
-
 
 
